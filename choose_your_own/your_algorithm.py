@@ -26,18 +26,26 @@ plt.xlabel("bumpiness")
 plt.ylabel("grade")
 plt.show()
 ################################################################################
+### Adaboost Classifier
+### http://scikit-learn.org/stable/auto_examples/ensemble/plot_adaboost_twoclass.html#sphx-glr-auto-examples-ensemble-plot-adaboost-twoclass-py
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.tree import DecisionTreeClassifier
 
+## Create and fit an AdaBoosted decision tree
+clf = AdaBoostClassifier(DecisionTreeClassifier(min_samples_split=15),
+                         algorithm="SAMME",
+                         n_estimators=40)
 
-### your code here!  name your classifier object clf if you want the 
+## Training the algorithm
+clf.fit(features_train, labels_train)
+
+## Making predictions and evaluating the algorithm: 
+pred = clf.predict(features_test)
+acc = clf.score(features_test,labels_test)
+print(acc)
+
+### name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
-
-
-
-
-
-
-
-
 try:
     prettyPicture(clf, features_test, labels_test)
 except NameError:
