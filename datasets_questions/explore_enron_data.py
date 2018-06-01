@@ -20,3 +20,23 @@ import pickle
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
 
+## How many data points (people) are in the dataset?
+len(enron_data)
+
+# For each person, how many features are available?
+# First I read the keys of the "enron_data" and then run the command below:
+len(enron_data['TAYLOR MITCHELL S'].keys())
+
+
+# How many POIs are in the dataset?
+## At this part, I will opt to use pandas:
+import pandas as pd
+
+enron = pd.DataFrame.from_dict(enron_data, orient='index')
+enron[enron['poi']==True]
+
+## It returns there is 18 rows, i.e. 18 POI.
+
+
+### The next questions are concerning the dataset:
+features = enron.columns  #Just to check
