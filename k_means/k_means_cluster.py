@@ -123,7 +123,15 @@ except NameError:
     
     
     
-    
+#%% ## Adding a Feature Scaling function to analyze the dataset (Lesson 10)
+def featureScaling(arr):
+    arr.sort()  #To guarantee the minimum value is the first one;
+    minVal = arr[0]+0.00
+    maxVal = arr[len(arr)-1]
+    for ix, val in enumerate(arr):
+        arr[ix] = (val - minVal)/(maxVal - minVal)
+    return arr
+
     
     
     
