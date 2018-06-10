@@ -36,7 +36,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s')
 
 
 ###############################################################################
-# Download the data, if not already on disk and load it as numpy arrays
+#%% Download the data, if not already on disk and load it as numpy arrays
 lfw_people = fetch_lfw_people(min_faces_per_person=70, resize=0.4)
 
 # introspect the images arrays to find the shapes (for plotting)
@@ -60,7 +60,7 @@ print "n_classes: %d" % n_classes
 
 
 ###############################################################################
-# Split into a training and testing set
+#%% Split into a training and testing set
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
 
 ###############################################################################
@@ -83,7 +83,7 @@ print "done in %0.3fs" % (time() - t0)
 
 
 ###############################################################################
-# Train a SVM classification model
+#%% Train a SVM classification model
 
 print "Fitting the classifier to the training set"
 t0 = time()
@@ -100,7 +100,7 @@ print clf.best_estimator_
 
 
 ###############################################################################
-# Quantitative evaluation of the model quality on the test set
+#%% Quantitative evaluation of the model quality on the test set
 
 print "Predicting the people names on the testing set"
 t0 = time()
@@ -112,7 +112,7 @@ print confusion_matrix(y_test, y_pred, labels=range(n_classes))
 
 
 ###############################################################################
-# Qualitative evaluation of the predictions using matplotlib
+#%% Qualitative evaluation of the predictions using matplotlib
 
 def plot_gallery(images, titles, h, w, n_row=3, n_col=4):
     """Helper function to plot a gallery of portraits"""
