@@ -36,8 +36,30 @@ features_train = features_train[:150].toarray()
 labels_train   = labels_train[:150]
 
 
+#%%## your code goes here
+from sklearn.tree import DecisionTreeClassifier
+clf = DecisionTreeClassifier()
+clf.fit(features_train,labels_train)
+clf.score(features_test,labels_test)
 
-### your code goes here
+#%% Identifying the most powerful features
+importances = clf.feature_importances_
+import numpy as np
+indices = np.argsort(importances)[::-1]
+print 'Feature Ranking: '
+for i in range(10):
+    print "{} feature no.{} ({})".format(i+1,indices[i],importances[indices[i]])
+
+#%% Finding this word [33614] on the tfIdf list:
+print(vectorizer.get_feature_names()[33614]) #-> The first outlier
+print(vectorizer.get_feature_names()[14343]) #-> The second outlier
+
+## Checking the other important feature words:
+print(vectorizer.get_feature_names()[21323])
+print(vectorizer.get_feature_names()[18849])
+print(vectorizer.get_feature_names()[11975])
+
+
 
 
 
