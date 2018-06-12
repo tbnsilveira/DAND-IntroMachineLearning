@@ -27,6 +27,17 @@ labels, features = targetFeatureSplit(data)
 
 
 
-### it's all yours from here forward!  
+#%%## it's all yours from here forward!  
+from sklearn import tree
 
+### Defining the classifier
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(features, labels)
+
+### Predicting
+pred = clf.predict(features)
+
+### Evaluating accuracy
+acc = clf.score(features, labels)
+print(acc)
 
